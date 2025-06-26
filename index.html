@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYNIX Studios - Desenvolvimento de Jogos Roblox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.5);
+        }
+        .game-card {
+            transition: all 0.3s ease;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 15px #3b82f6;
+        }
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #3b82f6;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        .timeline-line {
+            width: 4px;
+            background-color: #3b82f6;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 60px;
+        }
+        .timeline-content {
+            width: 45%;
+            position: relative;
+        }
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: auto;
+        }
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 20px;
+            }
+            .timeline-dot {
+                left: 20px;
+            }
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="bg-slate-900 py-4 px-6 md:px-12 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="text-blue-500 font-extrabold text-3xl">ZYNIX</div>
+                <div class="text-white text-sm font-bold ml-1 mt-3">Studios<sup class="text-xs">BR</sup></div>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-white hover:text-blue-400 font-medium">Início</a>
+                <a href="#games" class="text-white hover:text-blue-400 font-medium">Jogos</a>
+                <a href="#history" class="text-white hover:text-blue-400 font-medium">História</a>
+                <a href="#about" class="text-white hover:text-blue-400 font-medium">Sobre</a>
+                <a href="#contact" class="text-white hover:text-blue-400 font-medium">Contato</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-slate-800 mt-4 py-2 px-4 rounded-lg">
+            <a href="#home" class="block py-2 text-white hover:text-blue-400">Início</a>
+            <a href="#games" class="block py-2 text-white hover:text-blue-400">Jogos</a>
+            <a href="#history" class="block py-2 text-white hover:text-blue-400">História</a>
+            <a href="#about" class="block py-2 text-white hover:text-blue-400">Sobre</a>
+            <a href="#contact" class="block py-2 text-white hover:text-blue-400">Contato</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient py-20 px-6 md:px-12">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
+                    Bem-vindo à <span class="text-blue-300">ZYNIX Studios</span>
+                </h1>
+                <p class="text-lg md:text-xl text-blue-100 mb-8">
+                    Criamos experiências incríveis no Roblox com foco em jogos de aventura e simulação.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#games" class="btn-glow bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-center transition-all">
+                        Nossos Jogos
+                    </a>
+                    <a href="https://www.roblox.com/groups/search/all-groups?keyword=ZYNIX" target="_blank" class="bg-transparent hover:bg-blue-800 text-white font-bold py-3 px-8 border-2 border-blue-500 rounded-lg text-center transition-all">
+                        Visite no Roblox
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-72 h-72 md:w-96 md:h-96">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-full h-full">
+                        <path fill="#3B82F6" d="M45.7,-57.2C59.1,-45.8,69.5,-31.5,73.7,-15.3C77.9,1,76,19.2,67.8,33.6C59.6,48,45.2,58.6,29.3,65.2C13.5,71.8,-3.7,74.4,-20.8,70.5C-37.9,66.6,-54.8,56.2,-65.8,41.3C-76.8,26.4,-81.8,7,-77.8,-9.8C-73.8,-26.5,-60.8,-40.7,-46.1,-51.8C-31.4,-62.9,-15.7,-71,0.8,-72C17.3,-73,32.3,-68.6,45.7,-57.2Z" transform="translate(100 100)" />
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-32 h-32 text-white fill-current">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games" class="py-20 px-6 md:px-12 bg-slate-800">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-white">Nossos Jogos</h2>
+            <p class="text-blue-300 text-center mb-12 max-w-2xl mx-auto">
+                Confira nossas criações mais recentes no Roblox. Jogos de barco e aventuras inspiradas em Block Tales.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Game 1 -->
+                <div class="game-card bg-slate-900 rounded-xl overflow-hidden shadow-lg">
+                    <div class="relative">
+                        <svg class="w-full h-64" viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#1e40af" />
+                                    <stop offset="100%" stop-color="#0ea5e9" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="225" fill="url(#oceanGradient)" />
+                            
+                            <!-- Water -->
+                            <path d="M0,150 Q100,130 200,150 Q300,170 400,150 L400,225 L0,225 Z" fill="#0c4a6e" opacity="0.7" />
+                            
+                            <!-- Boat -->
+                            <rect x="150" y="140" width="100" height="30" rx="10" fill="#7c3aed" />
+                            <rect x="170" y="120" width="60" height="20" rx="5" fill="#8b5cf6" />
+                            <rect x="190" y="100" width="20" height="20" fill="#a78bfa" />
+                            
+                            <!-- Sun -->
+                            <circle cx="50" cy="50" r="20" fill="#fcd34d" />
+                            
+                            <!-- Clouds -->
+                            <circle cx="100" cy="60" r="15" fill="white" opacity="0.8" />
+                            <circle cx="120" cy="55" r="20" fill="white" opacity="0.8" />
+                            <circle cx="140" cy="60" r="15" fill="white" opacity="0.8" />
+                            
+                            <circle cx="280" cy="40" r="12" fill="white" opacity="0.8" />
+                            <circle cx="300" cy="35" r="17" fill="white" opacity="0.8" />
+                            <circle cx="320" cy="40" r="12" fill="white" opacity="0.8" />
+                        </svg>
+                        <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                            POPULAR
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">Boat Adventure</h3>
+                        <p class="text-blue-200 mb-4">
+                            Navegue pelos mares, enfrente tempestades e descubra tesouros escondidos nesta incrível aventura de barco.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Aventura</span>
+                            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Simulação</span>
+                            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Multiplayer</span>
+                        </div>
+                        <a href="https://www.roblox.com/games" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-center transition-all">
+                            Jogar Agora
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Game 2 -->
+                <div class="game-card bg-slate-900 rounded-xl overflow-hidden shadow-lg">
+                    <div class="relative">
+                        <svg class="w-full h-64" viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="blockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#4c1d95" />
+                                    <stop offset="100%" stop-color="#7e22ce" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="225" fill="url(#blockGradient)" />
+                            
+                            <!-- Ground -->
+                            <rect x="0" y="175" width="400" height="50" fill="#44403c" />
+                            
+                            <!-- Blocks -->
+                            <rect x="50" y="125" width="50" height="50" fill="#22c55e" />
+                            <rect x="100" y="125" width="50" height="50" fill="#3b82f6" />
+                            <rect x="150" y="125" width="50" height="50" fill="#ef4444" />
+                            <rect x="150" y="75" width="50" height="50" fill="#f59e0b" />
+                            <rect x="200" y="125" width="50" height="50" fill="#8b5cf6" />
+                            <rect x="250" y="125" width="50" height="50" fill="#ec4899" />
+                            <rect x="300" y="125" width="50" height="50" fill="#06b6d4" />
+                            <rect x="300" y="75" width="50" height="50" fill="#f97316" />
+                            
+                            <!-- Character -->
+                            <rect x="200" y="75" width="25" height="50" fill="#fbbf24" />
+                            <rect x="200" y="50" width="25" height="25" rx="5" fill="#fde68a" />
+                        </svg>
+                        <div class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                            NOVO
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">Block World</h3>
+                        <p class="text-blue-200 mb-4">
+                            Inspirado em Block Tales, construa seu próprio mundo, explore cavernas e crie sua própria história neste universo de blocos.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Construção</span>
+                            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Exploração</span>
+                            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Criativo</span>
+                        </div>
+                        <a href="https://www.roblox.com/games" target="_blank" class="block w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-center transition-all">
+                            Jogar Agora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Timeline Section -->
+    <section id="history" class="py-20 px-6 md:px-12 bg-gradient-to-b from-slate-900 to-slate-800">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-white">Nossa História</h2>
+            <p class="text-blue-300 text-center mb-16 max-w-2xl mx-auto">
+                Conheça a trajetória da ZYNIX Studios desde sua concepção até se tornar um estúdio de referência no Roblox.
+            </p>
+            
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="timeline-line"></div>
+                
+                <!-- 2021 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content bg-slate-800 p-6 rounded-xl shadow-lg border border-blue-900/30">
+                        <div class="bg-blue-900/30 inline-block px-3 py-1 rounded-full text-blue-300 font-bold mb-3">2021</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">O Início de Uma Ideia</h3>
+                        <p class="text-blue-200">
+                            Tudo começou com um sonho. Um pequeno grupo de amigos apaixonados por Roblox decidiu criar jogos que pudessem trazer experiências únicas para a plataforma. A ideia da ZYNIX Studios nasceu durante uma madrugada de brainstorming.
+                        </p>
+                        <div class="mt-4 flex items-center">
+                            <svg class="w-5 h-5 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-blue-300 text-sm">Primeiro conceito de jogo esboçado</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2023 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content bg-slate-800 p-6 rounded-xl shadow-lg border border-blue-900/30">
+                        <div class="bg-blue-900/30 inline-block px-3 py-1 rounded-full text-blue-300 font-bold mb-3">2023</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Voltando às Origens</h3>
+                        <p class="text-blue-200">
+                            Após um período de pausa para aprimoramento de habilidades, a equipe se reuniu novamente com uma visão renovada. Decidimos voltar às origens e focar no que realmente amamos: criar jogos de aventura e simulação que transportem os jogadores para mundos incríveis.
+                        </p>
+                        <div class="mt-4 flex items-center">
+                            <svg class="w-5 h-5 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-blue-300 text-sm">Lançamento do primeiro protótipo de "Boat Adventure"</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2025 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content bg-slate-800 p-6 rounded-xl shadow-lg border border-blue-900/30">
+                        <div class="bg-blue-900/30 inline-block px-3 py-1 rounded-full text-blue-300 font-bold mb-3">2025</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Fundação Oficial</h3>
+                        <p class="text-blue-200">
+                            A ZYNIX Studios foi oficialmente fundada como um estúdio de desenvolvimento de jogos para Roblox. Com uma equipe dedicada e talentosa, lançamos nossos primeiros jogos completos que rapidamente ganharam popularidade na plataforma.
+                        </p>
+                        <div class="mt-4 flex items-center">
+                            <svg class="w-5 h-5 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-blue-300 text-sm">Lançamento oficial de "Block World" e "Boat Adventure"</span>
+                        </div>
+                        <div class="mt-2 flex items-center">
+                            <svg class="w-5 h-5 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-blue-300 text-sm">Alcance de 1000+ jogadores ativos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Future -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content bg-slate-800 p-6 rounded-xl shadow-lg border border-blue-900/30">
+                        <div class="bg-blue-900/30 inline-block px-3 py-1 rounded-full text-blue-300 font-bold mb-3">Futuro</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">O Que Está Por Vir</h3>
+                        <p class="text-blue-200">
+                            Estamos apenas começando nossa jornada. Com novos projetos em desenvolvimento e uma comunidade crescente, o futuro da ZYNIX Studios é brilhante. Continuaremos a criar experiências inovadoras e divertidas para todos os fãs de Roblox.
+                        </p>
+                        <div class="mt-4">
+                            <a href="#contact" class="inline-flex items-center text-blue-400 hover:text-blue-300">
+                                Fique por dentro das novidades
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 md:px-12 bg-slate-900">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <svg class="w-full max-w-md mx-auto" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="200" cy="200" r="150" fill="#1e3a8a" />
+                        <circle cx="200" cy="200" r="120" fill="#2563eb" />
+                        <circle cx="200" cy="200" r="90" fill="#3b82f6" />
+                        
+                        <!-- Game controller icon -->
+                        <path d="M140,180 h40 v-20 h40 v20 h40 v40 h-40 v20 h-40 v-20 h-40 Z" fill="white" />
+                        <circle cx="160" cy="200" r="10" fill="#1e3a8a" />
+                        <circle cx="240" cy="200" r="10" fill="#1e3a8a" />
+                        <rect x="190" y="170" width="20" height="10" rx="5" fill="#1e3a8a" />
+                        <rect x="190" y="220" width="20" height="10" rx="5" fill="#1e3a8a" />
+                    </svg>
+                </div>
+                <div class="md:w-1/2 md:pl-10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Sobre a ZYNIX Studios</h2>
+                    <p class="text-blue-200 mb-6">
+                        Somos um estúdio brasileiro de desenvolvimento de jogos para a plataforma Roblox, 
+                        focados em criar experiências imersivas e divertidas para jogadores de todas as idades.
+                    </p>
+                    <p class="text-blue-200 mb-6">
+                        Nossa paixão é desenvolver jogos que combinam mecânicas inovadoras com visual atraente, 
+                        sempre buscando proporcionar momentos de diversão e desafio para nossa comunidade.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="bg-blue-900/50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-blue-400 mb-2">2+</div>
+                            <div class="text-white">Jogos Lançados</div>
+                        </div>
+                        <div class="bg-blue-900/50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-blue-400 mb-2">1000+</div>
+                            <div class="text-white">Jogadores</div>
+                        </div>
+                        <div class="bg-blue-900/50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-blue-400 mb-2">2025</div>
+                            <div class="text-white">Ano de Fundação</div>
+                        </div>
+                        <div class="bg-blue-900/50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-blue-400 mb-2">100%</div>
+                            <div class="text-white">Dedicação</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 px-6 md:px-12 bg-gradient-to-b from-slate-800 to-slate-900">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-white">Por que jogar nossos jogos?</h2>
+            <p class="text-blue-300 text-center mb-12 max-w-2xl mx-auto">
+                Descubra o que torna os jogos da ZYNIX Studios especiais e por que você deveria experimentá-los.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-blue-900/50">
+                    <div class="bg-blue-600 w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Diversão Garantida</h3>
+                    <p class="text-blue-200">
+                        Nossos jogos são projetados para proporcionar horas de diversão, com mecânicas viciantes e desafios empolgantes.
+                    </p>
+                </div>
+                
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-blue-900/50">
+                    <div class="bg-blue-600 w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Personalização</h3>
+                    <p class="text-blue-200">
+                        Personalize seu personagem, barcos e construções para criar uma experiência única que combina com seu estilo.
+                    </p>
+                </div>
+                
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-blue-900/50">
+                    <div class="bg-blue-600 w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Comunidade</h3>
+                    <p class="text-blue-200">
+                        Junte-se a uma comunidade crescente de jogadores, faça amigos e compartilhe suas aventuras com outros fãs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 md:px-12 bg-slate-800">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-white">Entre em Contato</h2>
+            <p class="text-blue-300 text-center mb-12 max-w-2xl mx-auto">
+                Tem alguma dúvida ou sugestão? Entre em contato conosco ou nos siga nas redes sociais.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-10">
+                <div class="md:w-1/2 bg-slate-900 p-8 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4 text-white">Envie uma mensagem</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-blue-200 mb-2">Nome</label>
+                            <input type="text" id="name" class="w-full bg-slate-800 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-blue-200 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full bg-slate-800 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-blue-200 mb-2">Mensagem</label>
+                            <textarea id="message" rows="4" class="w-full bg-slate-800 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+                        </div>
+                        <button type="button" id="send-message" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all">
+                            Enviar Mensagem
+                        </button>
+                        <div id="form-message" class="hidden text-center py-2 px-4 rounded-lg mt-4"></div>
+                    </form>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-slate-900 p-8 rounded-xl mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white">Informações de Contato</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="bg-blue-600/20 p-3 rounded-full mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-blue-300">Email</div>
+                                    <div class="text-white">contato@zynixstudios.com</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-blue-600/20 p-3 rounded-full mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-blue-300">Discord</div>
+                                    <div class="text-white">discord.gg/zynixstudios</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-900 p-8 rounded-xl">
+                        <h3 class="text-xl font-bold mb-4 text-white">Redes Sociais</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-blue-600/20 hover:bg-blue-600/40 p-3 rounded-full transition-all">
+                                <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-blue-600/20 hover:bg-blue-600/40 p-3 rounded-full transition-all">
+                                <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-blue-600/20 hover:bg-blue-600/40 p-3 rounded-full transition-all">
+                                <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-blue-600/20 hover:bg-blue-600/40 p-3 rounded-full transition-all">
+                                <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-blue-600/20 hover:bg-blue-600/40 p-3 rounded-full transition-all">
+                                <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 py-10 px-6 md:px-12 border-t border-blue-900/30">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <div class="text-blue-500 font-extrabold text-2xl">ZYNIX</div>
+                        <div class="text-white text-xs font-bold ml-1 mt-2">Studios<sup class="text-xs">BR</sup></div>
+                    </div>
+                    <p class="text-blue-200 mt-2 text-sm">
+                        Criando experiências incríveis no Roblox desde 2021.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-end">
+                    <p class="text-blue-200 text-sm mb-2">
+                        &copy; 2023 ZYNIX Studios. Todos os direitos reservados.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-blue-400 hover:text-blue-300 text-sm">Termos de Uso</a>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 text-sm">Política de Privacidade</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Contact form handling
+        const sendButton = document.getElementById('send-message');
+        const formMessage = document.getElementById('form-message');
+        
+        sendButton.addEventListener('click', () => {
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            
+            if (nameInput.value && emailInput.value && messageInput.value) {
+                formMessage.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+                formMessage.classList.remove('hidden', 'bg-red-500/20', 'text-red-300');
+                formMessage.classList.add('bg-green-500/20', 'text-green-300');
+                
+                // Reset form
+                nameInput.value = '';
+                emailInput.value = '';
+                messageInput.value = '';
+            } else {
+                formMessage.textContent = 'Por favor, preencha todos os campos.';
+                formMessage.classList.remove('hidden', 'bg-green-500/20', 'text-green-300');
+                formMessage.classList.add('bg-red-500/20', 'text-red-300');
+            }
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95589f9e548e0176',t:'MTc1MDg5ODExNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
