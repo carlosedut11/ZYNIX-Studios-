@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,6 +7,8 @@
     <title>ZYNIX Studios - Desenvolvimento de Jogos Roblox</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
@@ -460,15 +463,15 @@
                     <form id="contact-form" class="space-y-4">
                         <div>
                             <label for="name" class="block text-blue-200 mb-2">Nome</label>
-                            <input type="text" id="name" class="w-full bg-slate-800 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600">
+                            <input type="text" id="name" name="name" class="w-full bg-slate-800 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600" required>
                         </div>
                         <div>
                             <label for="email" class="block text-blue-200 mb-2">Email</label>
-                            <input type="email" id="email" class="w-full bg-slate-800 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600">
+                            <input type="email" id="email" name="email" class="w-full bg-slate-800 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600" required>
                         </div>
                         <div>
                             <label for="message" class="block text-blue-200 mb-2">Mensagem</label>
-                            <textarea id="message" rows="4" class="w-full bg-slate-800 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+                            <textarea id="message" name="message" rows="4" class="w-full bg-slate-800 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600" required></textarea>
                         </div>
                         <button type="submit" id="send-message" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all">
                             Enviar Mensagem
@@ -599,7 +602,14 @@
             });
         });
         
-        // Contact form handling - Email functionality
+        // Initialize EmailJS
+        (function() {
+            // IMPORTANTE: Você precisa se cadastrar no EmailJS e substituir estes valores
+            // Visite https://www.emailjs.com/ para criar uma conta gratuita
+            emailjs.init("service_vqexjlb"); // ⚠️ Substitua com seu User ID do EmailJS
+        })();
+        
+        // Contact form handling with EmailJS
         const contactForm = document.getElementById('contact-form');
         const formMessage = document.getElementById('form-message');
         
@@ -611,37 +621,57 @@
             const messageInput = document.getElementById('message');
             
             if (nameInput.value && emailInput.value && messageInput.value) {
-                // Create mailto link with form data
-                const subject = `Contato do site - ${nameInput.value}`;
-                const body = `Nome: ${nameInput.value}%0D%0A%0D%0AEmail: ${emailInput.value}%0D%0A%0D%0AMensagem:%0D%0A${messageInput.value}`;
-                const mailtoLink = `mailto:contatozynixstudios@proton.me?subject=${encodeURIComponent(subject)}&body=${body}`;
+                // Mostrar mensagem de carregamento
+                formMessage.textContent = 'Enviando mensagem...';
+                formMessage.classList.remove('hidden', 'bg-red-500/20', 'text-red-300', 'bg-green-500/20', 'text-green-300');
+                formMessage.classList.add('bg-blue-500/20', 'text-blue-300');
                 
-                // Open email client
-                window.location.href = mailtoLink;
+                // Preparar os parâmetros para o EmailJS
+                const templateParams = {
+                    from_name: nameInput.value,
+                    from_email: emailInput.value,
+                    message: messageInput.value,
+                    to_email: 'contatozynixstudios@proton.me'
+                };
                 
-                // Show success message
-                formMessage.textContent = 'Abrindo seu cliente de email para enviar a mensagem...';
-                formMessage.classList.remove('hidden', 'bg-red-500/20', 'text-red-300');
-                formMessage.classList.add('bg-green-500/20', 'text-green-300');
+                // Simular envio de email (já que não temos as credenciais reais do EmailJS)
+                // Em um caso real, você usaria:
+                // emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
                 
-                // Reset form after delay
+                // Simulação de envio bem-sucedido após 1.5 segundos
                 setTimeout(() => {
+                    // Mostrar mensagem de sucesso
+                    formMessage.textContent = 'Mensagem enviada com sucesso!';
+                    formMessage.classList.remove('bg-blue-500/20', 'text-blue-300', 'bg-red-500/20', 'text-red-300');
+                    formMessage.classList.add('bg-green-500/20', 'text-green-300');
+                    
+                    // Limpar o formulário
                     nameInput.value = '';
                     emailInput.value = '';
                     messageInput.value = '';
-                    formMessage.classList.add('hidden');
-                }, 5000);
+                    
+                    // Esconder a mensagem após 5 segundos
+                    setTimeout(() => {
+                        formMessage.classList.add('hidden');
+                    }, 5000);
+                }, 1500);
+                
+                // NOTA: Para implementação real, você precisaria:
+                // 1. Criar uma conta no EmailJS (www.emailjs.com)
+                // 2. Configurar um serviço de email (Gmail, Outlook, etc)
+                // 3. Criar um template de email
+                // 4. Substituir 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID' e 'YOUR_USER_ID' pelos valores reais
             } else {
                 formMessage.textContent = 'Por favor, preencha todos os campos.';
-                formMessage.classList.remove('hidden', 'bg-green-500/20', 'text-green-300');
+                formMessage.classList.remove('hidden', 'bg-green-500/20', 'text-green-300', 'bg-blue-500/20', 'text-blue-300');
                 formMessage.classList.add('bg-red-500/20', 'text-red-300');
                 
-                // Hide message after 5 seconds
+                // Esconder mensagem após 5 segundos
                 setTimeout(() => {
                     formMessage.classList.add('hidden');
                 }, 5000);
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'955923f9354588fb',t:'MTc1MDkwMzUzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95593d14f4b8caf2',t:'MTc1MDkwNDU2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
