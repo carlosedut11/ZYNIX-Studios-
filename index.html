@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -604,9 +605,8 @@
         
         // Initialize EmailJS
         (function() {
-            // IMPORTANTE: Você precisa se cadastrar no EmailJS e substituir estes valores
-            // Visite https://www.emailjs.com/ para criar uma conta gratuita
-            emailjs.init("service_vqexjlb"); // ⚠️ Substitua com seu User ID do EmailJS
+            // Substitua "YOUR_USER_ID" pelo seu User ID do EmailJS
+            emailjs.init("CXmf8rZmggTXJkQzg"); // ⚠️ Substitua com seu User ID do EmailJS
         })();
         
         // Contact form handling with EmailJS
@@ -634,33 +634,31 @@
                     to_email: 'contatozynixstudios@proton.me'
                 };
                 
-                // Simular envio de email (já que não temos as credenciais reais do EmailJS)
-                // Em um caso real, você usaria:
-                // emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-                
-                // Simulação de envio bem-sucedido após 1.5 segundos
-                setTimeout(() => {
-                    // Mostrar mensagem de sucesso
-                    formMessage.textContent = 'Mensagem enviada com sucesso!';
-                    formMessage.classList.remove('bg-blue-500/20', 'text-blue-300', 'bg-red-500/20', 'text-red-300');
-                    formMessage.classList.add('bg-green-500/20', 'text-green-300');
-                    
-                    // Limpar o formulário
-                    nameInput.value = '';
-                    emailInput.value = '';
-                    messageInput.value = '';
-                    
-                    // Esconder a mensagem após 5 segundos
-                    setTimeout(() => {
-                        formMessage.classList.add('hidden');
-                    }, 5000);
-                }, 1500);
-                
-                // NOTA: Para implementação real, você precisaria:
-                // 1. Criar uma conta no EmailJS (www.emailjs.com)
-                // 2. Configurar um serviço de email (Gmail, Outlook, etc)
-                // 3. Criar um template de email
-                // 4. Substituir 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID' e 'YOUR_USER_ID' pelos valores reais
+                // Enviar o email usando EmailJS
+                emailjs.send('service_vqexjlb', 'template_wv7tvq6', templateParams)
+                    .then(function(response) {
+                        // Mostrar mensagem de sucesso
+                        formMessage.textContent = 'Mensagem enviada com sucesso!';
+                        formMessage.classList.remove('bg-blue-500/20', 'text-blue-300', 'bg-red-500/20', 'text-red-300');
+                        formMessage.classList.add('bg-green-500/20', 'text-green-300');
+                        
+                        // Limpar o formulário
+                        nameInput.value = '';
+                        emailInput.value = '';
+                        messageInput.value = '';
+                        
+                        // Esconder a mensagem após 5 segundos
+                        setTimeout(() => {
+                            formMessage.classList.add('hidden');
+                        }, 5000);
+                    }, function(error) {
+                        // Mostrar mensagem de erro
+                        formMessage.textContent = 'Erro ao enviar mensagem. Tente novamente.';
+                        formMessage.classList.remove('bg-blue-500/20', 'text-blue-300', 'bg-green-500/20', 'text-green-300');
+                        formMessage.classList.add('bg-red-500/20', 'text-red-300');
+                        
+                        console.error('Erro ao enviar email:', error);
+                    });
             } else {
                 formMessage.textContent = 'Por favor, preencha todos os campos.';
                 formMessage.classList.remove('hidden', 'bg-green-500/20', 'text-green-300', 'bg-blue-500/20', 'text-blue-300');
@@ -673,5 +671,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95593d14f4b8caf2',t:'MTc1MDkwNDU2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'955cb096b1f8ff8c',t:'MTc1MDk0MDc1Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
