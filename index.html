@@ -457,7 +457,7 @@
             <div class="flex flex-col md:flex-row gap-10">
                 <div class="md:w-1/2 bg-slate-900 p-8 rounded-xl">
                     <h3 class="text-xl font-bold mb-4 text-white">Envie uma mensagem</h3>
-                    <form class="space-y-4">
+                    <form id="contact-form" class="space-y-4">
                         <div>
                             <label for="name" class="block text-blue-200 mb-2">Nome</label>
                             <input type="text" id="name" class="w-full bg-slate-800 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600">
@@ -470,7 +470,7 @@
                             <label for="message" class="block text-blue-200 mb-2">Mensagem</label>
                             <textarea id="message" rows="4" class="w-full bg-slate-800 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
                         </div>
-                        <button type="button" id="send-message" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all">
+                        <button type="submit" id="send-message" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all">
                             Enviar Mensagem
                         </button>
                         <div id="form-message" class="hidden text-center py-2 px-4 rounded-lg mt-4"></div>
@@ -489,7 +489,7 @@
                                 </div>
                                 <div>
                                     <div class="text-sm text-blue-300">Email</div>
-                                    <div class="text-white">contato@zynixstudios.com</div>
+                                    <div class="text-white">contatozynixstudios@proton.me</div>
                                 </div>
                             </div>
                             <div class="flex items-center">
@@ -599,35 +599,49 @@
             });
         });
         
-        // Contact form handling
-        const sendButton = document.getElementById('send-message');
+        // Contact form handling - Email functionality
+        const contactForm = document.getElementById('contact-form');
         const formMessage = document.getElementById('form-message');
         
-        sendButton.addEventListener('click', () => {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
             const nameInput = document.getElementById('name');
             const emailInput = document.getElementById('email');
             const messageInput = document.getElementById('message');
             
             if (nameInput.value && emailInput.value && messageInput.value) {
-                formMessage.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+                // Create mailto link with form data
+                const subject = `Contato do site - ${nameInput.value}`;
+                const body = `Nome: ${nameInput.value}%0D%0A%0D%0AEmail: ${emailInput.value}%0D%0A%0D%0AMensagem:%0D%0A${messageInput.value}`;
+                const mailtoLink = `mailto:contatozynixstudios@proton.me?subject=${encodeURIComponent(subject)}&body=${body}`;
+                
+                // Open email client
+                window.location.href = mailtoLink;
+                
+                // Show success message
+                formMessage.textContent = 'Abrindo seu cliente de email para enviar a mensagem...';
                 formMessage.classList.remove('hidden', 'bg-red-500/20', 'text-red-300');
                 formMessage.classList.add('bg-green-500/20', 'text-green-300');
                 
-                // Reset form
-                nameInput.value = '';
-                emailInput.value = '';
-                messageInput.value = '';
+                // Reset form after delay
+                setTimeout(() => {
+                    nameInput.value = '';
+                    emailInput.value = '';
+                    messageInput.value = '';
+                    formMessage.classList.add('hidden');
+                }, 5000);
             } else {
                 formMessage.textContent = 'Por favor, preencha todos os campos.';
                 formMessage.classList.remove('hidden', 'bg-green-500/20', 'text-green-300');
                 formMessage.classList.add('bg-red-500/20', 'text-red-300');
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 5000);
             }
-            
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                formMessage.classList.add('hidden');
-            }, 5000);
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95589f9e548e0176',t:'MTc1MDg5ODExNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'955923f9354588fb',t:'MTc1MDkwMzUzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
