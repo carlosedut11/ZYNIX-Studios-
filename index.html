@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -75,6 +73,13 @@
                 margin-left: 50px !important;
             }
         }
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -90,6 +95,7 @@
                 <a href="#games" class="text-white hover:text-blue-400 font-medium">Jogos</a>
                 <a href="#history" class="text-white hover:text-blue-400 font-medium">História</a>
                 <a href="#about" class="text-white hover:text-blue-400 font-medium">Sobre</a>
+                <a href="#community" class="text-white hover:text-blue-400 font-medium">Comunidade</a>
                 <a href="#contact" class="text-white hover:text-blue-400 font-medium">Contato</a>
             </div>
             <div class="md:hidden">
@@ -105,6 +111,7 @@
             <a href="#games" class="block py-2 text-white hover:text-blue-400">Jogos</a>
             <a href="#history" class="block py-2 text-white hover:text-blue-400">História</a>
             <a href="#about" class="block py-2 text-white hover:text-blue-400">Sobre</a>
+            <a href="#community" class="block py-2 text-white hover:text-blue-400">Comunidade</a>
             <a href="#contact" class="block py-2 text-white hover:text-blue-400">Contato</a>
         </div>
     </nav>
@@ -120,7 +127,7 @@
                     Criamos experiências incríveis no Roblox com foco em jogos de aventura e simulação.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#games" class="btn-glow bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-center transition-all">
+                    <a href="https://zynixstudiosnossosjogos.netlify.app/" class="btn-glow bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-center transition-all">
                         Nossos Jogos
                     </a>
                     <a href="https://www.roblox.com/groups/search/all-groups?keyword=ZYNIX" target="_blank" class="bg-transparent hover:bg-blue-800 text-white font-bold py-3 px-8 border-2 border-blue-500 rounded-lg text-center transition-all">
@@ -143,118 +150,74 @@
         </div>
     </section>
 
-    <!-- Games Section -->
-    <section id="games" class="py-20 px-6 md:px-12 bg-slate-800">
-        <div class="container mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-white">Nossos Jogos</h2>
-            <p class="text-blue-300 text-center mb-12 max-w-2xl mx-auto">
-                Confira nossas criações mais recentes no Roblox. Jogos de barco e aventuras inspiradas em Block Tales.
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <!-- Game 1 -->
-                <div class="game-card bg-slate-900 rounded-xl overflow-hidden shadow-lg">
-                    <div class="relative">
-                        <svg class="w-full h-64" viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#1e40af" />
-                                    <stop offset="100%" stop-color="#0ea5e9" />
-                                </linearGradient>
-                            </defs>
-                            <rect width="400" height="225" fill="url(#oceanGradient)" />
-                            
-                            <!-- Water -->
-                            <path d="M0,150 Q100,130 200,150 Q300,170 400,150 L400,225 L0,225 Z" fill="#0c4a6e" opacity="0.7" />
-                            
-                            <!-- Boat -->
-                            <rect x="150" y="140" width="100" height="30" rx="10" fill="#7c3aed" />
-                            <rect x="170" y="120" width="60" height="20" rx="5" fill="#8b5cf6" />
-                            <rect x="190" y="100" width="20" height="20" fill="#a78bfa" />
-                            
-                            <!-- Sun -->
-                            <circle cx="50" cy="50" r="20" fill="#fcd34d" />
-                            
-                            <!-- Clouds -->
-                            <circle cx="100" cy="60" r="15" fill="white" opacity="0.8" />
-                            <circle cx="120" cy="55" r="20" fill="white" opacity="0.8" />
-                            <circle cx="140" cy="60" r="15" fill="white" opacity="0.8" />
-                            
-                            <circle cx="280" cy="40" r="12" fill="white" opacity="0.8" />
-                            <circle cx="300" cy="35" r="17" fill="white" opacity="0.8" />
-                            <circle cx="320" cy="40" r="12" fill="white" opacity="0.8" />
-                        </svg>
-                        <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                            POPULAR
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-white">Boat Adventure</h3>
-                        <p class="text-blue-200 mb-4">
-                            Navegue pelos mares, enfrente tempestades e descubra tesouros escondidos nesta incrível aventura de barco.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Aventura</span>
-                            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Simulação</span>
-                            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Multiplayer</span>
-                        </div>
-                        <a href="https://www.roblox.com/games" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-center transition-all">
-                            Jogar Agora
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Game 2 -->
-                <div class="game-card bg-slate-900 rounded-xl overflow-hidden shadow-lg">
-                    <div class="relative">
-                        <svg class="w-full h-64" viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="blockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#4c1d95" />
-                                    <stop offset="100%" stop-color="#7e22ce" />
-                                </linearGradient>
-                            </defs>
-                            <rect width="400" height="225" fill="url(#blockGradient)" />
-                            
-                            <!-- Ground -->
-                            <rect x="0" y="175" width="400" height="50" fill="#44403c" />
-                            
-                            <!-- Blocks -->
-                            <rect x="50" y="125" width="50" height="50" fill="#22c55e" />
-                            <rect x="100" y="125" width="50" height="50" fill="#3b82f6" />
-                            <rect x="150" y="125" width="50" height="50" fill="#ef4444" />
-                            <rect x="150" y="75" width="50" height="50" fill="#f59e0b" />
-                            <rect x="200" y="125" width="50" height="50" fill="#8b5cf6" />
-                            <rect x="250" y="125" width="50" height="50" fill="#ec4899" />
-                            <rect x="300" y="125" width="50" height="50" fill="#06b6d4" />
-                            <rect x="300" y="75" width="50" height="50" fill="#f97316" />
-                            
-                            <!-- Character -->
-                            <rect x="200" y="75" width="25" height="50" fill="#fbbf24" />
-                            <rect x="200" y="50" width="25" height="25" rx="5" fill="#fde68a" />
-                        </svg>
-                        <div class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                            NOVO
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-white">Block World</h3>
-                        <p class="text-blue-200 mb-4">
-                            Inspirado em Block Tales, construa seu próprio mundo, explore cavernas e crie sua própria história neste universo de blocos.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Construção</span>
-                            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Exploração</span>
-                            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Criativo</span>
-                        </div>
-                        <a href="https://www.roblox.com/games" target="_blank" class="block w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-center transition-all">
-                            Jogar Agora
-                        </a>
-                    </div>
-                </div>
-            </div>
+<!-- Games Section -->
+<section id="games" class="py-20 px-6 md:px-12 bg-slate-800">
+    <div class="container mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-white">Nossos Jogos</h2>
+        <p class="text-blue-300 text-center mb-12 max-w-2xl mx-auto">
+            Confira nossas criações mais recentes no Roblox. Jogos de barco e aventuras.
+        </p>
+        
+<!-- Game 1 - Responsive Version -->
+<div class="game-card bg-slate-900 rounded-xl overflow-hidden shadow-lg">
+    <div class="relative">
+        <!-- Responsive Image with Different Heights per Device -->
+        <img src="https://tr.rbxcdn.com/180DAY-46f133997a6e07222398b1342b7ffa07/768/432/Image/Webp/noFilter" alt="Mar de Espera - A ultima semana (Beta)" 
+             class="w-full h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 object-cover">
+        
+        <!-- "POPULAR" Badge -->
+        <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+            Fase de desenvolvimento
         </div>
-    </section>
+    </div>
+    
+    <div class="p-4 sm:p-6">
+        <h3 class="text-lg sm:text-xl font-bold mb-2 text-white">Mar de Espera - A ultima semana Beta</h3>
+        
+        <p class="text-blue-200 mb-3 sm:mb-4 text-sm sm:text-base">
+            Seu barco perdeu o controle e você acabou colidindo com uma ilha misteriosa. Agora, lute para sobreviver em meio a zumbis sedentos por sangue... e cuidado: um monstro aterrorizante espreita nas sombras da ilha. 😰
+        </p>
+        
+        <div class="flex flex-wrap gap-2 mb-4 sm:mb-6">
+            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Aventura</span>
+            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Simulação</span>
+            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Multiplayer</span>
+        </div>
+        
+        <a href="https://www.roblox.com/games" target="_blank" 
+           class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-center transition-all text-sm sm:text-base">
+            Ver o mapa
+        </a>
+    </div>
+</div>
+
+<!-- Game 2 - Versão Responsiva -->
+<div class="game-card bg-slate-900 rounded-xl overflow-hidden shadow-lg">
+    <div class="relative">
+        <!-- Imagem responsiva com altura ajustável -->
+        <img src="https://tr.rbxcdn.com/180DAY-b7901124081f40ef6d40638b10a191ba/768/432/Image/Webp/noFilter" alt="??" 
+             class="w-full h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 object-cover">
+        
+        <div class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+            Fase de desenvolvimento
+        </div>
+    </div>
+    <div class="p-4 sm:p-6">
+        <h3 class="text-lg sm:text-xl font-bold mb-2 text-white">??</h3>
+        <p class="text-blue-200 mb-3 sm:mb-4 text-sm sm:text-base">
+            este jogo esta em fase de desenvolvimento uma dica esse jogo e inspirado no block tales
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4 sm:mb-6">
+            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Comate</span>
+            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Exploração</span>
+            <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">Criativo</span>
+        </div>
+        <a href="https://www.roblox.com/games" target="_blank" 
+           class="block w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-center transition-all text-sm sm:text-base">
+            Ver o mapa
+        </a>
+    </div>
+</div>
 
     <!-- History Timeline Section -->
     <section id="history" class="py-20 px-6 md:px-12 bg-gradient-to-b from-slate-900 to-slate-800">
@@ -317,13 +280,13 @@
                             <svg class="w-5 h-5 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-blue-300 text-sm">Lançamento oficial de "Block World" e "Boat Adventure"</span>
+                            <span class="text-blue-300 text-sm">Desenvolvimento dos jogos oficiais: '??' e 'Mar de Espera – A Última Semana (Beta)"</span>
                         </div>
                         <div class="mt-2 flex items-center">
                             <svg class="w-5 h-5 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-blue-300 text-sm">Alcance de 1000+ jogadores ativos</span>
+                            <span class="text-blue-300 text-sm">é a nossa meta de jogadores é 1000+ jogadores ativos</span>
                         </div>
                     </div>
                 </div>
@@ -450,8 +413,183 @@
         </div>
     </section>
 
+    <!-- Community Section (Replacing Reviews) -->
+    <section id="community" class="py-20 px-6 md:px-12 bg-slate-800">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-white">Nossa Comunidade</h2>
+            <p class="text-blue-300 text-center mb-12 max-w-2xl mx-auto">
+                Junte-se à comunidade ZYNIX e faça parte desta aventura!
+            </p>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Community Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <!-- Game Stats -->
+                    <div class="stat-card bg-slate-900 p-8 rounded-xl shadow-lg border border-blue-900/30">
+                        <h3 class="text-xl font-bold mb-6 text-white">Estatísticas dos Jogos</h3>
+                        
+                        <!-- Boat Adventure Stats -->
+                        <div class="mb-8">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-lg font-bold text-white">Boat Adventure</h4>
+                                <span class="bg-blue-600/20 text-blue-300 text-xs px-3 py-1 rounded-full">ATIVO</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-blue-300">Jogadores Ativos</span>
+                                        <span class="text-white">650+</span>
+                                    </div>
+                                    <div class="w-full bg-slate-800 rounded-full h-2">
+                                        <div class="bg-blue-600 h-2 rounded-full" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-blue-300">Partidas Jogadas</span>
+                                        <span class="text-white">12,450</span>
+                                    </div>
+                                    <div class="w-full bg-slate-800 rounded-full h-2">
+                                        <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-blue-300">Tesouros Encontrados</span>
+                                        <span class="text-white">8,320</span>
+                                    </div>
+                                    <div class="w-full bg-slate-800 rounded-full h-2">
+                                        <div class="bg-blue-600 h-2 rounded-full" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Block World Stats -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-lg font-bold text-white">Block World</h4>
+                                <span class="bg-purple-600/20 text-purple-300 text-xs px-3 py-1 rounded-full">NOVO</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-blue-300">Jogadores Ativos</span>
+                                        <span class="text-white">350+</span>
+                                    </div>
+                                    <div class="w-full bg-slate-800 rounded-full h-2">
+                                        <div class="bg-purple-600 h-2 rounded-full" style="width: 35%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-blue-300">Mundos Criados</span>
+                                        <span class="text-white">5,230</span>
+                                    </div>
+                                    <div class="w-full bg-slate-800 rounded-full h-2">
+                                        <div class="bg-purple-600 h-2 rounded-full" style="width: 55%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-blue-300">Blocos Colocados</span>
+                                        <span class="text-white">1.2M+</span>
+                                    </div>
+                                    <div class="w-full bg-slate-800 rounded-full h-2">
+                                        <div class="bg-purple-600 h-2 rounded-full" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Community Events -->
+                    <div class="stat-card bg-slate-900 p-8 rounded-xl shadow-lg border border-blue-900/30">
+                        <h3 class="text-xl font-bold mb-6 text-white">Eventos da Comunidade</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="border-l-4 border-blue-500 pl-4">
+                                <div class="text-sm text-blue-400 mb-1">PRÓXIMO EVENTO</div>
+                                <h4 class="text-lg font-bold text-white mb-1">Torneio de Corrida de Barcos</h4>
+                                <p class="text-blue-200 text-sm mb-2">
+                                    Participe do nosso torneio mensal e ganhe prêmios exclusivos!
+                                </p>
+                                <div class="flex items-center text-sm text-blue-300">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Sábado, 15 de Julho - 19:00
+                                </div>
+                            </div>
+                            
+                            <div class="border-l-4 border-purple-500 pl-4">
+                                <div class="text-sm text-blue-400 mb-1">EVENTO SEMANAL</div>
+                                <h4 class="text-lg font-bold text-white mb-1">Construção Colaborativa</h4>
+                                <p class="text-blue-200 text-sm mb-2">
+                                    Junte-se a outros jogadores para construir uma cidade inteira em Block World!
+                                </p>
+                                <div class="flex items-center text-sm text-blue-300">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Todo domingo - 15:00
+                                </div>
+                            </div>
+                            
+                            <div class="border-l-4 border-green-500 pl-4">
+                                <div class="text-sm text-blue-400 mb-1">ATUALIZAÇÃO</div>
+                                <h4 class="text-lg font-bold text-white mb-1">Nova Ilha em Boat Adventure</h4>
+                                <p class="text-blue-200 text-sm mb-2">
+                                    Uma nova ilha misteriosa foi descoberta! Seja o primeiro a explorar!
+                                </p>
+                                <div class="flex items-center text-sm text-blue-300">
+                                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Disponível agora!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Discord Community -->
+                <div class="stat-card bg-slate-900 p-8 rounded-xl shadow-lg border border-blue-900/30">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                            <svg class="w-32 h-32" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0)">
+                                    <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z" fill="#5865F2"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0">
+                                        <rect width="71" height="55" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="md:w-2/3 md:pl-8">
+                            <h3 class="text-xl font-bold mb-4 text-white">Junte-se ao nosso Discord</h3>
+                            <p class="text-blue-200 mb-6">
+                                Participe da nossa comunidade no Discord para ficar por dentro de todas as novidades, eventos especiais, atualizações e para encontrar outros jogadores!
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <a href="https://discord.gg/zynixstudios" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg text-center transition-all">
+                                    Entrar no Discord
+                                </a>
+                                <a href="#contact" class="bg-transparent hover:bg-slate-700 text-white font-bold py-3 px-6 border-2 border-indigo-500 rounded-lg text-center transition-all">
+                                    Mais Informações
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="py-20 px-6 md:px-12 bg-slate-800">
+    <section id="contact" class="py-20 px-6 md:px-12 bg-slate-900">
         <div class="container mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-white">Entre em Contato</h2>
             <p class="text-blue-300 text-center mb-12 max-w-2xl mx-auto">
@@ -459,20 +597,20 @@
             </p>
             
             <div class="flex flex-col md:flex-row gap-10">
-                <div class="md:w-1/2 bg-slate-900 p-8 rounded-xl">
+                <div class="md:w-1/2 bg-slate-800 p-8 rounded-xl">
                     <h3 class="text-xl font-bold mb-4 text-white">Envie uma mensagem</h3>
                     <form id="contact-form" class="space-y-4">
                         <div>
                             <label for="name" class="block text-blue-200 mb-2">Nome</label>
-                            <input type="text" id="name" name="name" class="w-full bg-slate-800 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                            <input type="text" id="name" name="name" class="w-full bg-slate-700 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600" required>
                         </div>
                         <div>
                             <label for="email" class="block text-blue-200 mb-2">Email</label>
-                            <input type="email" id="email" name="email" class="w-full bg-slate-800 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                            <input type="email" id="email" name="email" class="w-full bg-slate-700 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600" required>
                         </div>
                         <div>
                             <label for="message" class="block text-blue-200 mb-2">Mensagem</label>
-                            <textarea id="message" name="message" rows="4" class="w-full bg-slate-800 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600" required></textarea>
+                            <textarea id="message" name="message" rows="4" class="w-full bg-slate-700 border border-blue-900 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-600" required></textarea>
                         </div>
                         <button type="submit" id="send-message" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all">
                             Enviar Mensagem
@@ -482,7 +620,7 @@
                 </div>
                 
                 <div class="md:w-1/2">
-                    <div class="bg-slate-900 p-8 rounded-xl mb-8">
+                    <div class="bg-slate-800 p-8 rounded-xl mb-8">
                         <h3 class="text-xl font-bold mb-4 text-white">Informações de Contato</h3>
                         <div class="space-y-4">
                             <div class="flex items-center">
@@ -510,7 +648,7 @@
                         </div>
                     </div>
                     
-                    <div class="bg-slate-900 p-8 rounded-xl">
+                    <div class="bg-slate-800 p-8 rounded-xl">
                         <h3 class="text-xl font-bold mb-4 text-white">Redes Sociais</h3>
                         <div class="flex space-x-4">
                             <a href="#" class="bg-blue-600/20 hover:bg-blue-600/40 p-3 rounded-full transition-all">
@@ -605,8 +743,7 @@
         
         // Initialize EmailJS
         (function() {
-            // Substitua "YOUR_USER_ID" pelo seu User ID do EmailJS
-            emailjs.init("CXmf8rZmggTXJkQzg"); // ⚠️ Substitua com seu User ID do EmailJS
+            emailjs.init("CXmf8rZmggTXJkQzg");
         })();
         
         // Contact form handling with EmailJS
@@ -671,5 +808,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'955cb096b1f8ff8c',t:'MTc1MDk0MDc1Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'955f8f9995c3aeff',t:'MTc1MDk3MDg1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
